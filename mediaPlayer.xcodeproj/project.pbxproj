@@ -13,6 +13,7 @@
 		3917CF5B25A0F10900F70F3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3917CF5A25A0F10900F70F3E /* Assets.xcassets */; };
 		3917CF5E25A0F10900F70F3E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3917CF5D25A0F10900F70F3E /* Preview Assets.xcassets */; };
 		3917CF6125A0F10900F70F3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3917CF5F25A0F10900F70F3E /* LaunchScreen.storyboard */; };
+		3917CF6B25A10F6200F70F3E /* PlaySoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3917CF6A25A10F6200F70F3E /* PlaySoundManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3917CF5D25A0F10900F70F3E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3917CF6025A0F10900F70F3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3917CF6225A0F10900F70F3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3917CF6A25A10F6200F70F3E /* PlaySoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		3917CF5325A0F10800F70F3E /* mediaPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				3917CF6925A10F4F00F70F3E /* Manager */,
 				3917CF5425A0F10800F70F3E /* AppDelegate.swift */,
 				3917CF5625A0F10800F70F3E /* SceneDelegate.swift */,
 				3917CF5825A0F10800F70F3E /* ContentView.swift */,
@@ -73,6 +76,14 @@
 				3917CF5D25A0F10900F70F3E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3917CF6925A10F4F00F70F3E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				3917CF6A25A10F6200F70F3E /* PlaySoundManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +159,7 @@
 				3917CF5525A0F10800F70F3E /* AppDelegate.swift in Sources */,
 				3917CF5725A0F10800F70F3E /* SceneDelegate.swift in Sources */,
 				3917CF5925A0F10800F70F3E /* ContentView.swift in Sources */,
+				3917CF6B25A10F6200F70F3E /* PlaySoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

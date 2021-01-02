@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var manager = PlaySoundManager()
     var body: some View {
-        Text("Hello, world!")
+        Button(action:{
+            manager.playSound()
+        }){
+            Text("Start playing some sounds")
+        }
             .padding()
     }
 }
