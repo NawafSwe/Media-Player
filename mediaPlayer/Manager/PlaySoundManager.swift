@@ -13,19 +13,29 @@ import SwiftUI
 
 final class PlaySoundManager : ObservableObject{
     var bombSoundEffect: AVAudioPlayer?
-   @Published var isPlaying = false
+    @Published var isPlaying = false
     func playSound(){
         if !isPlaying{
             DispatchQueue.main.async {
                 self.isPlaying = true
             }
-           
-            let path = Bundle.main.path(forResource: "example.mp3", ofType: nil)!
+            
+            guard let path = Bundle.main.path(forResource: "A",ofType : "wav") else {
+                print("cannot play sound because there is no such voice")
+                return }
             let url = URL(fileURLWithPath: path)
             
             do{
-                bombSoundEffect = try AVAudioPlayer(contentsOf: url)
-                bombSoundEffect?.play()
+                try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+                try AVAudioSession.sharedInstance().setActive(true)
+                /* iOS 10 and earlier require the following line:
+                 player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+                bombSoundEffect = try AVAudioPlayer(contentsOf: url,fileTypeHint: AVFileType.mp3.rawValue)
+                guard let player = bombSoundEffect else {
+                    print("Could not play")
+                    return
+                }
+                player.play()
             }
             catch{
                 print("sound not working")
