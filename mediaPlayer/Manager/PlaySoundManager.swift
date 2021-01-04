@@ -12,7 +12,7 @@ import SwiftUI
 // using singleton approach
 
 final class PlaySoundManager : ObservableObject{
-    var bombSoundEffect: AVAudioPlayer?
+    var soundPlayer: AVAudioPlayer?
     @Published var isPlaying = false
     func playSound(){
         if !isPlaying{
@@ -25,13 +25,15 @@ final class PlaySoundManager : ObservableObject{
                 return }
             let url = URL(fileURLWithPath: path)
             
+            
+            
             do{
                 try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
                 try AVAudioSession.sharedInstance().setActive(true)
                 /* iOS 10 and earlier require the following line:
                  player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-                bombSoundEffect = try AVAudioPlayer(contentsOf: url,fileTypeHint: AVFileType.mp3.rawValue)
-                guard let player = bombSoundEffect else {
+                soundPlayer = try AVAudioPlayer(contentsOf: url,fileTypeHint: AVFileType.mp3.rawValue)
+                guard let player = soundPlayer else {
                     print("Could not play")
                     return
                 }
@@ -44,9 +46,10 @@ final class PlaySoundManager : ObservableObject{
             DispatchQueue.main.async {
                 self.isPlaying = false
             }
-            bombSoundEffect?.pause()
+            soundPlayer?.pause()
         }
         
     }
+    
     
 }
