@@ -7,49 +7,40 @@
 
 import Foundation
 import AVFoundation
+import AVKit
 import UIKit
 import SwiftUI
 // using singleton approach
 
 final class PlaySoundManager : ObservableObject{
-    var soundPlayer: AVAudioPlayer?
+    var player:AVPlayer?
     @Published var isPlaying = false
     func playSound(){
         if !isPlaying{
             DispatchQueue.main.async {
                 self.isPlaying = true
             }
-            
-            guard let path = Bundle.main.path(forResource: "A",ofType : "wav") else {
-                print("cannot play sound because there is no such voice")
-                return }
-            let url = URL(fileURLWithPath: path)
-            
-            
-            
             do{
                 try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
                 try AVAudioSession.sharedInstance().setActive(true)
                 /* iOS 10 and earlier require the following line:
                  player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
-                soundPlayer = try AVAudioPlayer(contentsOf: url,fileTypeHint: AVFileType.mp3.rawValue)
-                guard let player = soundPlayer else {
-                    print("Could not play")
-                    return
-                }
-                player.play()
+               
+                // sensitive url
+                let playerItem = AVPlayerItem(url: URL(string: "")!)
+                 player = AVPlayer(playerItem: playerItem)
+                 player?.play()
             }
             catch{
+                print(error.localizedDescription)
                 print("sound not working")
             }
         }else {
             DispatchQueue.main.async {
                 self.isPlaying = false
             }
-            soundPlayer?.pause()
+            player?.pause()
         }
         
     }
-    
-    
 }
